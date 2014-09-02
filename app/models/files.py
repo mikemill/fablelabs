@@ -86,6 +86,11 @@ class File(db.Model):
         return key.generate_url(expires_in)
 
     @classmethod
+    def search(cls, terms):
+        from app.models.words import Word
+        return cls.query.filter(cls.words.any(Word.word.in_(terms))).all()
+
+    @classmethod
     def find_or_create(cls, name, mime=''):
         """Find an existing file by name or create it if not found"""
         return cls.query.filter(cls.name == name).first() or cls(name, mime)
@@ -118,5 +123,4 @@ class File(db.Model):
             key = Key(bucket)
             key.key = filename
 
-	return key
-
+        return key

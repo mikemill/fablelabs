@@ -1,7 +1,6 @@
 from app.utils import wordsplit_pattern
 
 from app.models.files import File
-from app.models.words import Word
 
 from flask import redirect, request, jsonify
 
@@ -35,17 +34,8 @@ def search(text=None):
         # Split the text into individual words
         individual_words = wordsplit_pattern.findall(text)
 
-        file_matches = {}
+        files = File.search(individual_words)
 
-        # Find the words that match and then get the files for that word
-        words = Word.search(individual_words)
-
-        for word in words:
-            for file in word.files:
-                if file.name not in file_matches:
-                    file_matches[file.name] = file
-
-        files = file_matches.values()
     else:
         files = File.query.all()
 
