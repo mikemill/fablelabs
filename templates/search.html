@@ -1,0 +1,31 @@
+{% extends "layout.tpl.html" %}
+{% block content %}
+<h1>Search</h1>
+<form class="form-inline" role="search" id="search-form">
+    <div class="form-group">
+        <label class="sr-only" for="terms">Search terms</label>
+        <span class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-search"></span>
+            </span>
+            <input type="text" class="form-control" name="terms" id="terms" placeholder="Search terms">
+        </span>
+    </div>
+    <button class="btn btn-default">Search</button>
+</form>
+
+<h2>Results</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Asset name</th>
+            <th>File Name</th>
+        </tr>
+    </thead>
+    <tbody id="search-results">
+        <tr>
+            <td colspan="2">Search above to find files</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

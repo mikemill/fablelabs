@@ -1,0 +1,25 @@
+{% extends "layout.tpl.html" %}
+{% block content %}
+<h1>File upload</h1>
+<form action="/api/publish?browser" method="post" enctype="multipart/form-data" role="form" id="upload-form">
+    <div class="form-group">
+        <span class="input-group">
+            <label class="sr-only" for="asset">Asset</label>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-tag"></span>
+            </span>
+            <input type="text" class="form-control" name="name" id="asset" placeholder="Asset name" required>
+        </span>
+    </div>
+    <div class="form-group">
+        <span class="input-group">
+            <label class="sr-only" for="file">File</label>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-upload"></span>
+            </span>
+            <input type="file" class="form-control" name="file" id="file" placeholder="File to upload" required>
+        </span>
+    </div>
+    <button type="submit" class="btn btn-default">Upload</button>
+</form>
+{% endblock %}
