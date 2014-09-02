@@ -34,7 +34,6 @@ def connect(app):
     global db
 
     app.config['SQLALCHEMY_DATABASE_URI'] = get_connection_string()
-    app.config['SQLALCHEMY_ECHO'] = True
     db = SQLAlchemy(app)
 
     @app.teardown_request

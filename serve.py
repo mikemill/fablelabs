@@ -36,4 +36,4 @@ if __name__ == '__main__':
     load_models()
     setup_routes(application)
 
-    application.run(debug=True)
+    application.run(port=8000)

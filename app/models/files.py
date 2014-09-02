@@ -74,7 +74,10 @@ class File(db.Model):
     def store(self, uploaded_file):
         """Store the file contents on S3"""
         key = self._get_key(self.file_name)
-        key.set_contents_from_file(uploaded_file)
+        if self._contents:
+            key.set_contents_from_string(self._contents)
+        else:
+            key.set_contents_from_file(uploaded_file)
 
     def download_url(self):
         """Get the S3 url for this file"""
@@ -114,4 +117,6 @@ class File(db.Model):
         if key is None:
             key = Key(bucket)
             key.key = filename
+
+	return key
 

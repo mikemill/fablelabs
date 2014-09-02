@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('#search-form').submit(function() {
         var terms = $('#terms').val();
-        $.getJSON('/api/search?browser' + terms, function(data) {
+        $.getJSON('/api/search/' + terms, function(data) {
             var table = $('#search-results');
             table.children().remove();
 
